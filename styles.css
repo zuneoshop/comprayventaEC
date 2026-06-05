@@ -233,7 +233,7 @@ nav ul li a:hover {
 /* ZONA BLOG */
 .grid-blog {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    grid-template-columns: 1fr;
     gap: 20px;
     row-gap: 35px;
     margin-bottom: 40px;
@@ -244,7 +244,7 @@ nav ul li a:hover {
     padding: 20px;
     border-radius: 10px;
     border-left: 30px solid #c09d60;
-    margin: 10px;
+    margin: 30px;
 }
 
 .post-blog h3 {
