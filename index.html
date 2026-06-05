@@ -1,1 +1,130 @@
 COMPRA Y VENTA EC
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>comprayventaEC | Comunidad Gamer del Ecuador</title>
+    <link rel="stylesheet" href="styles.css">
+    <!-- Iconos de FontAwesome para que se vea moderno -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+
+    <!-- BARRA DE NAVEGACIÓN -->
+    <header>
+        <div class="logo">
+            <h1>comprayventa<span>EC</span></h1>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="#catalogo"><i class="fas fa-gamepad"></i> Catálogo</a></li>
+                <li><a href="#giftcards"><i class="fas fa-credit-card"></i> Gift Cards</a></li>
+                <li><a href="#comunidad"><i class="fas fa-newspaper"></i> Trucos & Noticias</a></li>
+                <li><a href="#contacto" class="btn-nav">Publicar Gratis</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- SECCIÓN HERO (BIENVENIDA) -->
+    <section class="hero">
+        <div class="hero-content">
+            <h2>Compra, Vende y Cambia en Ecuador</h2>
+            <p>El punto de encuentro gamer para cambiar tus consolas, conseguir juegos nuevos y las mejores Gift Cards.</p>
+            <div class="hero-buttons">
+                <a href="#catalogo" class="btn-primary">Ver Catálogo</a>
+                <a href="https://wa.me/TU_NUMERO" target="_blank" class="btn-whatsapp"><i class="fab fa-whatsapp"></i> Escríbenos</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- CONTENEDOR PRINCIPAL DE PRODUCTOS -->
+    <main id="catalogo" class="container">
+        <h2 class="section-title">Lo Último en Consolas y Videojuegos</h2>
+        
+        <div class="grid-productos">
+            <!-- Producto 1: Consola -->
+            <div class="card">
+                <span class="badge cambio">Cambio o Venta</span>
+                <img src="https://via.placeholder.com/300x200" alt="Consola">
+                <div class="card-info">
+                    <h3>PlayStation 5 Slim (1TB)</h3>
+                    <p class="precio">$520.00 / Se recibe cambios</p>
+                    <p class="descripcion">Estado 10/10, un mes de uso. Viene con un control original.</p>
+                    <a href="https://wa.me/TU_NUMERO?text=Hola,%20me%20interesa%20la%20PS5" class="btn-card" target="_blank">Negociar</a>
+                </div>
+            </div>
+
+            <!-- Producto 2: Juego -->
+            <div class="card">
+                <span class="badge nuevo">Nuevo</span>
+                <img src="https://via.placeholder.com/300x200" alt="Juego">
+                <div class="card-info">
+                    <h3>Resident Evil 4 Remake (PS5)</h3>
+                    <p class="precio">$45.00</p>
+                    <p class="descripcion">Físico, sellado. Entregas en Quito o envíos por Servientrega.</p>
+                    <a href="https://wa.me/TU_NUMERO?text=Hola,%20me%20interesa%20RE4" class="btn-card" target="_blank">Comprar</a>
+                </div>
+            </div>
+
+            <!-- Producto 3: Juego Call of Duty -->
+            <div class="card">
+                <span class="badge usado">Usado</span>
+                <img src="https://via.placeholder.com/300x200" alt="Juego">
+                <div class="card-info">
+                    <h3>Call of Duty: Black Ops 3</h3>
+                    <p class="precio">$20.00 / Se cambia</p>
+                    <p class="descripcion">Ideal para el modo Zombies. Disco en perfecto estado.</p>
+                    <a href="https://wa.me/TU_NUMERO?text=Hola,%20me%20interesa%20BO3" class="btn-card" target="_blank">Negociar</a>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- SECCIÓN GIFT CARDS -->
+    <section id="giftcards" class="giftcards-section">
+        <div class="container">
+            <h2 class="section-title">Gift Cards Digitales (Entrega Inmediata)</h2>
+            <div class="grid-productos">
+                <div class="card-gift">
+                    <i class="fab fa-playstation-card"></i>
+                    <h3>PSN Card $20</h3>
+                    <p class="precio-card">$23.00</p>
+                    <p>Códigos para cuentas de Estados Unidos.</p>
+                    <a href="#" class="btn-card">Comprar Pin</a>
+                </div>
+                <div class="card-gift">
+                    <i class="fab fa-xbox"></i>
+                    <h3>Xbox Game Pass 1 Mes</h3>
+                    <p class="precio-card">$14.00</p>
+                    <p>Acceso ilimitado a cientos de juegos.</p>
+                    <a href="#" class="btn-card">Comprar Pin</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECCIÓN TRUCO Y COMUNIDAD -->
+    <section id="comunidad" class="container">
+        <h2 class="section-title">Zona Gamer: Trucos y Publicidad</h2>
+        <div class="grid-blog">
+            <div class="post-blog">
+                <h3>Guía de Supervivencia: Modo Zombies BO3</h3>
+                <p>Te dejamos los mejores consejos para abrir el mapa de Shadows of Evil y mejorar el arma en las primeras rondas...</p>
+                <a href="#" class="read-more">Leer truco →</a>
+            </div>
+            <div class="post-blog">
+                <h3>Próximos Lanzamientos en Ecuador</h3>
+                <p>Analizamos las tiendas físicas del país para traerte las fechas exactas y preventas de los juegos más esperados del año.</p>
+                <a href="#" class="read-more">Ver más →</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <p>&copy; 2026 comprayventaEC. Hecho por y para Gamers ecuatorianos.</p>
+    </footer>
+
+</body>
+</html>
