@@ -240,10 +240,10 @@ nav ul li a:hover {
 }
 
 .post-blog {
-    background-color: #161b22;
-    padding: 25px;
+    background-color: #222d3c;
+    padding: 20px;
     border-radius: 10px;
-    border-left: 4px solid #00ff87;
+    border-left: 30px solid #00ff87;
 }
 
 .post-blog h3 {
