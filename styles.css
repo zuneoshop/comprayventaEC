@@ -244,6 +244,7 @@ nav ul li a:hover {
     padding: 20px;
     border-radius: 10px;
     border-left: 30px solid #c09d60;
+    margin: 10px;
 }
 
 .post-blog h3 {
