@@ -245,6 +245,11 @@ nav ul li a:hover {
     border-left: 30px solid #498e52;
     margin-bottom: 0;
     box-sizing: border-box;
+    height: auto;
+    margin-top: 0;
+    margin-left: 0;
+    margin-right: 0;
+    margin-bottom: 30px;
 }
 
 .post-blog h3 {
