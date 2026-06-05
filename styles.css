@@ -235,7 +235,6 @@ nav ul li a:hover {
     display: grid;
     grid-template-columns: 1fr;
     gap: 10px;
-    row-gap: 15px;
     margin-bottom: 40px;
 }
 
@@ -243,8 +242,8 @@ nav ul li a:hover {
     background-color: #242930;
     padding: 20px;
     border-radius: 10px;
-    border-left: 30px solid #c09d60;
-    margin: 0px;
+    border-left: 30px solid #498e52;
+    margin: 25px;
 }
 
 .post-blog h3 {
