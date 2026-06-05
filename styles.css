@@ -234,6 +234,7 @@ nav ul li a:hover {
 .grid-blog {
     display: flex;
     flex-direction: column;
+    gap: 20px;
     margin-bottom: 40px;
 }
 
@@ -242,7 +243,8 @@ nav ul li a:hover {
     padding: 20px;
     border-radius: 10px;
     border-left: 30px solid #498e52;
-    margin: 30px;
+    margin-bottom: 0;
+    box-sizing: border-box;
 }
 
 .post-blog h3 {
