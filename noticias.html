@@ -7,6 +7,25 @@
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
 </head>
+<ul>
+                <li style="display: flex; align-items: center; margin-right: 10px;">
+                    <div style="position: relative; display: flex; align-items: center;">
+                        <input type="text" id="site-search" placeholder="Buscar juegos o noticias..." 
+                               style="width: 0px; opacity: 0; padding: 6px 0px; border: 1px solid #00ff87; border-radius: 20px; background: #13171c; color: white; font-size: 0.85rem; outline: none; transition: all 0.3s ease; padding-left: 15px; box-shadow: 0 0 10px rgba(0, 255, 135, 0.1); font-family: inherit;">
+                        <button id="search-btn" style="background: none; border: none; color: #cbd5e1; cursor: pointer; padding: 8px; font-size: 1.1rem; transition: color 0.2s;"
+                                onmouseover="this.style.color='#00ff87'" 
+                                onmouseout="if(document.getElementById('site-search').style.width !== '200px') this.style.color='#cbd5e1'">
+                            <i class="fas fa-search"></i>
+                        </button>
+                    </div>
+                </li>
+
+                <li>
+                    <a href="https://wa.me/593991668902?text=..." style="...">
+                        <i class="fab fa-whatsapp"></i> Publica tus artículos
+                    </a>
+                </li>
+            </ul>
 <body>
 
     <main style="max-width: 1150px; margin: 60px auto; padding: 0 20px;">
