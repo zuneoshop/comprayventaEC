@@ -353,3 +353,38 @@ li.dropdown-menu:hover .dropdown-content {
 a:visited {
     color: inherit !important;
 }
+/* Botón flotante de retroceso gamer */
+.btn-back-floating {
+    position: fixed;
+    bottom: 25px;
+    left: 25px;
+    background-color: #1e252f;
+    color: #cbd5e1;
+    border: 1px solid rgba(0, 255, 135, 0.3);
+    padding: 10px 18px;
+    border-radius: 30px;
+    font-size: 0.9rem;
+    font-weight: bold;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    z-index: 9999; /* Se asegura de quedar por encima de tarjetas y fondos */
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+    font-family: inherit;
+}
+
+/* Efecto Hover interactivo */
+.btn-back-floating:hover {
+    color: #00ff87;
+    border-color: #00ff87;
+    background-color: #13171c;
+    transform: translateY(-3px);
+    box-shadow: 0 0 15px rgba(0, 255, 135, 0.25);
+}
+
+/* Efecto al presionarlo */
+.btn-back-floating:active {
+    transform: translateY(-1px);
+}
