@@ -7,60 +7,355 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>comprayventaEC | Comunidad Gamer del Ecuador</title>
     <link rel="stylesheet" href="styles.css">
-    <!-- Iconos de FontAwesome para que se vea moderno -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        /* ==========================================================================
+           ESTILOS EMBERED/INLINE PARA REDISEÑO GAMER PREMIUM 
+           ========================================================================== */
+        body {
+            background-color: #0b0f12 !important;
+            color: #cbd5e1;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        /* 1. BARRA DE NAVEGACIÓN CYBERPUNK */
+        header {
+            background: linear-gradient(180deg, #13171c 0%, #0b0f12 100%) !important;
+            border-bottom: 2px solid #00ff87 !important; /* Línea de Neón Verde de base */
+            padding: 15px 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 4px 20px rgba(0, 255, 135, 0.1);
+        }
+        .logo h1 {
+            color: white !important;
+            font-weight: 800;
+            letter-spacing: 1px;
+            margin: 0;
+        }
+        .logo h1 span {
+            color: #e63946 !important; /* "EC" resalta en Rojo Neón */
+            text-shadow: 0 0 10px rgba(230, 57, 70, 0.6);
+        }
+        nav ul {
+            display: flex;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            align-items: center;
+        }
+        nav ul li {
+            margin-left: 25px;
+        }
+        nav ul li a {
+            color: #cbd5e1 !important;
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.3s ease;
+        }
+        nav ul li a:hover {
+            color: #00ff87 !important; /* Hover Verde Neón */
+        }
+
+        /* 2. SECCIÓN HERO DE ALTO IMPACTO */
+        .hero {
+            background: linear-gradient(135deg, rgba(11, 15, 18, 0.95) 40%, rgba(230, 57, 70, 0.15) 100%), 
+                        radial-gradient(circle at 10% 20%, rgba(0, 255, 135, 0.1) 0%, transparent 40%) !important;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            padding: 100px 20px !important;
+            text-align: center;
+        }
+        .hero h2 {
+            font-size: 3rem !important;
+            font-weight: 800;
+            color: white !important;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 15px;
+            background: linear-gradient(90deg, #ffffff, #cbd5e1);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .hero p {
+            font-size: 1.2rem !important;
+            color: #a0a5b0 !important;
+            max-width: 700px;
+            margin: 0 auto 35px auto;
+        }
+        .hero-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+        .btn-primary {
+            background: linear-gradient(90deg, #00ff87, #00b894) !important; /* Degradado Verde Gamer */
+            color: #0b0f12 !important;
+            font-weight: 700;
+            padding: 14px 30px;
+            border-radius: 8px;
+            text-decoration: none;
+            text-transform: uppercase;
+            font-size: 0.95rem;
+            letter-spacing: 0.5px;
+            box-shadow: 0 4px 15px rgba(0, 255, 135, 0.3);
+            transition: 0.3s ease;
+        }
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(0, 255, 135, 0.5);
+        }
+        .btn-whatsapp {
+            background: #25d366 !important;
+            color: white !important;
+            font-weight: 700;
+            padding: 14px 30px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-size: 0.95rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            box-shadow: 0 4px 15px rgba(37, 211, 102, 0.2);
+            transition: 0.3s ease;
+        }
+        .btn-whatsapp:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(37, 211, 102, 0.4);
+        }
+
+        /* TÍTULOS DE SECCIÓN */
+        .section-title {
+            color: white !important;
+            font-size: 2rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            border-left: 4px solid #e63946; /* Detalle Rojo Neón */
+            padding-left: 15px;
+            margin-top: 60px;
+            margin-bottom: 35px;
+        }
+
+        /* 3. REJILLA Y TARJETAS DE CATÁLOGO */
+        .grid-productos {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+        .card {
+            background: linear-gradient(145deg, #1e242c, #13171c) !important;
+            border: 1px solid rgba(255, 255, 255, 0.05) !important;
+            border-radius: 12px !important;
+            overflow: hidden;
+            position: relative;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.4);
+            transition: 0.3s ease;
+        }
+        .card:hover {
+            transform: translateY(-5px);
+            border-color: rgba(0, 255, 135, 0.3) !important; /* Brillo verde sutil al hover */
+            box-shadow: 0 12px 30px rgba(0,255,135,0.1);
+        }
+        
+        /* Badges de Categorías Estilizados */
+        .badge {
+            position: absolute;
+            top: 15px;
+            left: 15px;
+            padding: 5px 12px;
+            border-radius: 6px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            z-index: 10;
+        }
+        .badge.venta { background: linear-gradient(90deg, #ffaa00, #ff5500); color: white; }
+        .badge.nuevo { background: linear-gradient(90deg, #00ff87, #00b894); color: #0b0f12; }
+        .badge.usado { background: linear-gradient(90deg, #00f2fe, #4facfe); color: white; }
+
+        .card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+        .card-info {
+            padding: 25px;
+        }
+        .card-info h3 {
+            color: white !important;
+            font-size: 1.25rem;
+            margin-top: 0;
+            margin-bottom: 10px;
+            font-weight: 700;
+        }
+        .card-info .precio {
+            color: #00ff87 !important; /* Precio en Verde Neón */
+            font-weight: 700;
+            font-size: 1.1rem;
+            margin-bottom: 15px;
+        }
+        .card-info .descripcion {
+            color: #a0a5b0;
+            font-size: 0.9rem;
+            line-height: 1.5;
+            margin-bottom: 20px;
+        }
+        .btn-card {
+            background: linear-gradient(90deg, #e63946, #9b2226) !important; /* Botón de compra en Rojo */
+            color: white !important;
+            text-decoration: none;
+            font-weight: 700;
+            display: block;
+            text-align: center;
+            padding: 12px;
+            border-radius: 8px;
+            text-transform: uppercase;
+            font-size: 0.85rem;
+            letter-spacing: 0.5px;
+            box-shadow: 0 4px 12px rgba(230, 57, 70, 0.2);
+            transition: 0.3s ease;
+        }
+        .btn-card:hover {
+            box-shadow: 0 6px 18px rgba(230, 57, 70, 0.4);
+            transform: scale(1.02);
+        }
+
+        /* 4. SECCIÓN GIFT CARDS DIGITALES */
+        .giftcards-section {
+            background: linear-gradient(180deg, #0b0f12 0%, #13171c 50%, #0b0f12 100%) !important;
+            padding: 40px 0;
+        }
+        .card-gift {
+            background: linear-gradient(145deg, #1a1f26, #111418) !important;
+            border: 1px solid rgba(0, 255, 135, 0.1) !important; /* Bordes verdosos finos */
+            border-radius: 16px;
+            padding: 30px 25px;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            transition: 0.3s ease;
+        }
+        .card-gift:hover {
+            border-color: #00ff87 !important;
+            box-shadow: 0 10px 30px rgba(0, 255, 135, 0.1);
+            transform: translateY(-5px);
+        }
+        .card-gift i {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+        }
+        .card-gift .fa-playstation-card, .card-gift .fa-playstation { color: #0070d1; text-shadow: 0 0 15px rgba(0,112,209,0.4); }
+        .card-gift .fa-xbox { color: #107c10; text-shadow: 0 0 15px rgba(16,124,16,0.4); }
+        
+        .card-gift h3 { color: white !important; font-size: 1.3rem; margin-bottom: 8px; }
+        .card-gift .precio-card { color: #00ff87 !important; font-size: 1.4rem; font-weight: 800; margin-bottom: 12px; }
+        .card-gift p { color: #a0a5b0; font-size: 0.9rem; margin-bottom: 20px; }
+
+        /* 5. SECCIÓN COMUNIDAD / ZONA GAMER (DISEÑO TIPO REVISTA) */
+        .grid-blog {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
+            gap: 30px;
+            margin-bottom: 60px;
+        }
+        @media (max-width: 600px) { .grid-blog { grid-template-columns: 1fr; } }
+        
+        .post-blog {
+            background: linear-gradient(145deg, #1e242c, #13171c) !important;
+            border-left: 4px solid #e63946 !important; /* Detalle Rojo */
+            border-top: 1px solid rgba(255,255,255,0.03);
+            border-right: 1px solid rgba(255,255,255,0.03);
+            border-bottom: 1px solid rgba(255,255,255,0.03);
+            padding: 30px;
+            border-radius: 4px 12px 12px 4px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.4);
+            transition: 0.3s;
+        }
+        .post-blog:hover {
+            border-left-color: #00ff87 !important; /* Cambia a Verde al pasar el mouse */
+            transform: translateX(5px);
+        }
+        .post-blog h3 { color: white !important; margin-top: 0; font-size: 1.35rem; font-weight: 700; line-height: 1.4; }
+        .post-blog p { color: #cbd5e1; font-size: 0.95rem; line-height: 1.6; margin-bottom: 20px; }
+        
+        .read-more {
+            color: #00ff87 !important;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 0.9rem;
+            transition: 0.2s;
+            display: inline-flex;
+            align-items: center;
+        }
+        .read-more:hover {
+            color: white !important;
+            letter-spacing: 1px;
+        }
+
+        /* 6. FOOTER COMPACTO */
+        footer {
+            background-color: #070a0d !important;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            padding: 25px 20px;
+            text-align: center;
+            font-size: 0.9rem;
+            color: #717d8a;
+        }
+    </style>
 </head>
 <body>
 
-    <!-- BARRA DE NAVEGACIÓN -->
     <header>
         <div class="logo">
             <h1>comprayventa<span>EC</span></h1>
         </div>
         <nav>
             <ul>
-              <li class="dropdown-menu">
-    <a href="#" class="dropdown-trigger">
-        <i class="fas fa-gamepad"></i> Catálogo
-    </a>
-    <div class="dropdown-content">
-        <a href="compra.html"><i class="fas fa-shopping-cart"></i> Compra</a>
-        <a href="venta.html"><i class="fas fa-tags"></i> Venta</a>
-        <a href="cambio.html"><i class="fas fa-exchange-alt"></i> Cambio</a>
-    </div>
-</li>
-<li class="dropdown-menu">
-            <a href="#" class="dropdown-trigger">
-                <i class="fas fa-newspaper"></i> Noticias y Consejos
-            </a>
-            <div class="dropdown-content">
-                <a href="noticias.html"><i class="fas fa-bullhorn"></i> Noticias</a>
-                <a href="trucos.html"><i class="fas fa-lightbulb"></i> Trucos</a>
-                <a href="historias-juegos.html"><i class="fas fa-book-open"></i> Juegos Gamers</a>
-            </div>
-        </li>
+                <li class="dropdown-menu">
+                    <a href="#" class="dropdown-trigger">
+                        <i class="fas fa-gamepad"></i> Catálogo
+                    </a>
+                    <div class="dropdown-content">
+                        <a href="compra.html"><i class="fas fa-shopping-cart"></i> Compra</a>
+                        <a href="venta.html"><i class="fas fa-tags"></i> Venta</a>
+                        <a href="cambio.html"><i class="fas fa-exchange-alt"></i> Cambio</a>
+                    </div>
+                </li>
+                <li class="dropdown-menu">
+                    <a href="#" class="dropdown-trigger">
+                        <i class="fas fa-newspaper"></i> Noticias y Consejos
+                    </a>
+                    <div class="dropdown-content">
+                        <a href="noticias.html"><i class="fas fa-bullhorn"></i> Noticias</a>
+                        <a href="trucos.html"><i class="fas fa-lightbulb"></i> Trucos</a>
+                        <a href="historias-juegos.html"><i class="fas fa-book-open"></i> Juegos Gamers</a>
+                    </div>
+                </li>
             </ul>
         </nav>
     </header>
 
-    <!-- SECCIÓN HERO (BIENVENIDA) -->
     <section class="hero">
         <div class="hero-content">
             <h2>Compra, Vende y Cambia en Ecuador</h2>
             <p>El punto de encuentro gamer para cambiar tus consolas, conseguir juegos nuevos y las mejores Gift Cards.</p>
             <div class="hero-buttons">
                 <a href="#catalogo" class="btn-primary">Ver Catálogo</a>
-                <a href="https://wa.me/TU_NUMERO" target="_blank" class="btn-whatsapp"><i class="fab fa-whatsapp"></i> Escríbenos</a>
+                <a href="https://wa.me/593991668902" target="_blank" class="btn-whatsapp"><i class="fab fa-whatsapp"></i> Escríbenos</a>
             </div>
         </div>
     </section>
 
-    <!-- CONTENEDOR PRINCIPAL DE PRODUCTOS -->
-    <main id="catalogo" class="container">
+    <main id="catalogo" style="max-width: 1150px; margin: 0 auto; padding: 0 20px;">
         <h2 class="section-title">Lo Último en Consolas y Videojuegos</h2>
         
         <div class="grid-productos">
-            <!-- Producto 1: Juego Fisico PS4 -->
             <div class="card">
                 <span class="badge venta">Cambio o Venta</span>
                 <img src="images/juego.jpeg.jpeg" alt="Juego God of War PS4">
@@ -72,7 +367,6 @@
                 </div>
             </div>
 
-            <!-- Producto 2: Juego -->
             <div class="card">
                 <span class="badge nuevo">Nuevo</span>
                 <img src="https://via.placeholder.com/300x200" alt="Juego">
@@ -80,11 +374,10 @@
                     <h3>Resident Evil 4 Remake (PS5)</h3>
                     <p class="precio">$45.00</p>
                     <p class="descripcion">Físico, sellado. Entregas en Quito o envíos por Servientrega.</p>
-                    <a href="https://wa.me/TU_NUMERO?text=Hola,%20me%20interesa%20RE4" class="btn-card" target="_blank">Comprar</a>
+                    <a href="https://wa.me/593991668902?text=Hola,%20me%20interesa%20RE4" class="btn-card" target="_blank">Comprar</a>
                 </div>
             </div>
 
-            <!-- Producto 3: Juego Call of Duty -->
             <div class="card">
                 <span class="badge usado">Usado</span>
                 <img src="https://via.placeholder.com/300x200" alt="Juego">
@@ -92,53 +385,50 @@
                     <h3>Call of Duty: Black Ops 3</h3>
                     <p class="precio">$20.00 / Se cambia</p>
                     <p class="descripcion">Ideal para el modo Zombies. Disco en perfecto estado.</p>
-                    <a href="https://wa.me/TU_NUMERO?text=Hola,%20me%20interesa%20BO3" class="btn-card" target="_blank">Negociar</a>
+                    <a href="https://wa.me/593991668902?text=Hola,%20me%20interesa%20BO3" class="btn-card" target="_blank">Negociar</a>
                 </div>
             </div>
         </div>
     </main>
 
-    <!-- SECCIÓN GIFT CARDS -->
     <section id="giftcards" class="giftcards-section">
-        <div class="container">
+        <div style="max-width: 1150px; margin: 0 auto; padding: 0 20px;">
             <h2 class="section-title">Gift Cards Digitales (Entrega Inmediata)</h2>
             <div class="grid-productos">
                 <div class="card-gift">
-                    <i class="fab fa-playstation-card"></i>
+                    <i class="fab fa-playstation"></i>
                     <h3>PSN Card $20</h3>
                     <p class="precio-card">$23.00</p>
                     <p>Códigos para cuentas de Estados Unidos.</p>
-                    <a href="#" class="btn-card">Comprar Pin</a>
+                    <a href="https://wa.me/593991668902?text=Hola,%20me%20interesa%20PSN%20Card" class="btn-card">Comprar Pin</a>
                 </div>
                 <div class="card-gift">
                     <i class="fab fa-xbox"></i>
                     <h3>Xbox Game Pass 1 Mes</h3>
                     <p class="precio-card">$14.00</p>
                     <p>Acceso ilimitado a cientos de juegos.</p>
-                    <a href="#" class="btn-card">Comprar Pin</a>
+                    <a href="https://wa.me/593991668902?text=Hola,%20me%20interesa%20Xbox%20Game%20Pass" class="btn-card">Comprar Pin</a>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- SECCIÓN TRUCO Y COMUNIDAD -->
-    <section id="comunidad" class="container">
+    <section id="comunidad" style="max-width: 1150px; margin: 0 auto; padding: 0 20px; margin-bottom: 40px;">
         <h2 class="section-title">Zona Gamer: Trucos y Publicidad</h2>
         <div class="grid-blog">   
-                <div class="post-blog">
-                    <h3>Guía de Supervivencia: Modo Zombies BO3</h3>
-                    <p>Te dejamos los mejores consejos para abrir el mapa de Shadows of Evil y mejorar el...</p>
-                    <a href="#" class="read-more">Leer truco →</a>
-                </div>
-                <div class="post-blog">
-                    <h3>Top 10 mejores juegos para PS2</h3>
-                    <p>Analizamos los mejores títulos que debes probar en tu Play Station 2.</p>
-                    <a href="#" class="read-more">Ver más →</a>
-                </div>
+            <div class="post-blog">
+                <h3>Guía de Supervivencia: Modo Zombies BO3</h3>
+                <p>Te dejamos los mejores consejos para abrir el mapa de Shadows of Evil y mejorar el arma especial paso a paso de forma épica...</p>
+                <a href="trucos.html" class="read-more">Leer truco →</a>
             </div>
-        </section> 
+            <div class="post-blog">
+                <h3>Top 10 mejores juegos para PS2</h3>
+                <p>Analizamos los mejores títulos clásicos que marcaron época y que debes volver a probar en tu consola PlayStation 2.</p>
+                <a href="historias-juegos.html" class="read-more">Ver más →</a>
+            </div>
+        </div>
+    </section> 
 
-    <!-- FOOTER -->
     <footer>
         <p>&copy; 2026 comprayventaEC. Hecho por y para Gamers ecuatorianos.</p>
     </footer>
