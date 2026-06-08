@@ -295,3 +295,58 @@ footer {
         grid-template-columns: 1fr;
     }
 }
+li.dropdown-menu {
+    position: relative;
+    display: inline-block;
+}
+
+.dropdown-content {
+    display: none;             /* Oculto por defecto */
+    position: absolute;
+    top: 100%;                 /* Se posiciona abajo */
+    left: 0;
+    background-color: #1a1e23; /* Tu fondo oscuro */
+    min-width: 220px;          /* Ancho para que respire el texto */
+    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.6);
+    border-radius: 8px;
+    border: 1px solid #2d343c;
+    z-index: 99999;            /* Que flote por encima de todo */
+    padding: 10px 0;
+}
+
+/* 2. Rompemos el comportamiento horizontal heredado de nav ul li a */
+nav ul li .dropdown-content a {
+    display: flex !important;         /* Alineación icono-texto */
+    flex-direction: row !important;   /* Icono a la izquierda, texto a la derecha */
+    align-items: center !important;
+    justify-content: flex-start !important;
+    color: #cbd5e1 !important;        /* Forzamos el color claro */
+    padding: 12px 20px !important;    /* Espaciado de botón lateral */
+    margin: 0 !important;             /* Eliminamos márgenes raros heredados */
+    font-size: 1.05rem !important;    /* Texto un toque más grande */
+    text-align: left !important;
+    width: 100% !important;           /* Que ocupe todo el ancho de la cajita */
+    box-sizing: border-box !important;
+    transition: all 0.2s ease-in-out;
+}
+
+/* 3. Volvemos locos de grandes a los iconos y los alineamos */
+nav ul li .dropdown-content a i {
+    font-size: 1.4rem !important;     /* ¡Iconos bien grandes! */
+    color: #498e52 !important;        /* Tu verde característico por defecto */
+    width: 25px !important;           /* Espacio fijo para que los textos queden perfectamente alineados */
+    text-align: center !important;
+    margin-right: 10px !important;
+}
+
+/* 4. Efecto hover premium cuando pasas el mouse por cada opción */
+nav ul li .dropdown-content a:hover {
+    background-color: #242930 !important;
+    color: #ffffff !important;         /* El texto resalta a blanco */
+    padding-left: 25px !important;     /* Efecto de desplazamiento lateral */
+}
+
+/* 5. Activación del despliegue al pasar el mouse por encima */
+li.dropdown-menu:hover .dropdown-content {
+    display: block !important;
+}
