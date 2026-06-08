@@ -338,6 +338,23 @@
                         <a href="historias-juegos.html"><i class="fas fa-book-open"></i> Juegos Gamers</a>
                     </div>
                 </li>
+                <li style="display: flex; align-items: center; margin-right: 10px;">
+                    <div style="position: relative; display: flex; align-items: center;">
+                        <input type="text" id="site-search" placeholder="Buscar juegos o noticias..." 
+                               style="width: 0px; opacity: 0; padding: 6px 0px; border: 1px solid #00ff87; border-radius: 20px; background: #13171c; color: white; font-size: 0.85rem; outline: none; transition: all 0.3s ease; padding-left: 15px; box-shadow: 0 0 10px rgba(0, 255, 135, 0.1); font-family: inherit;">
+                        <button id="search-btn" style="background: none; border: none; color: #cbd5e1; cursor: pointer; padding: 8px; font-size: 1.1rem; transition: color 0.2s;"
+                                onmouseover="this.style.color='#00ff87'" 
+                                onmouseout="if(document.getElementById('site-search').style.width !== '200px') this.style.color='#cbd5e1'">
+                            <i class="fas fa-search"></i>
+                        </button>
+                    </div>
+                </li>
+
+                <li>
+                    <a href="https://wa.me/593991668902?text=..." style="...">
+                        <i class="fab fa-whatsapp"></i> Publica tus artículos
+                    </a>
+                </li>
                
                     </div>
                 </li> <li>
@@ -445,6 +462,59 @@
     <footer>
         <p>&copy; 2026 comprayventaEC. Hecho por y para Gamers ecuatorianos.</p>
     </footer>
+<script>
+    const searchBtn = document.getElementById('search-btn');
+    const searchInput = document.getElementById('site-search');
 
+    // 1. Animación para abrir/cerrar la barra de búsqueda
+    searchBtn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        if (searchInput.style.width === '200px') {
+            searchInput.style.width = '0px';
+            searchInput.style.opacity = '0';
+            searchInput.style.paddingRight = '0px';
+            searchBtn.style.color = '#cbd5e1';
+            searchInput.value = ''; // Limpia la búsqueda al cerrar
+            filtrarElementos('');
+        } else {
+            searchInput.style.width = '200px';
+            searchInput.style.opacity = '1';
+            searchInput.style.paddingRight = '35px';
+            searchBtn.style.color = '#00ff87';
+            searchInput.focus();
+        }
+    });
+
+    // Cerrar la barra si hacen clic en cualquier otra parte de la pantalla
+    document.addEventListener('click', (e) => {
+        if (!searchInput.contains(e.target) && !searchBtn.contains(e.target)) {
+            searchInput.style.width = '0px';
+            searchInput.style.opacity = '0';
+            searchInput.style.paddingRight = '0px';
+            searchBtn.style.color = '#cbd5e1';
+        }
+    });
+
+    // 2. Lógica de filtrado en tiempo real
+    searchInput.addEventListener('input', (e) => {
+        const tildesYMinusculas = e.target.value.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+        filtrarElementos(tildesYMinusculas);
+    });
+
+    function filtrarElementos(termino) {
+        // Busca las tarjetas de productos (ajusta la clase .card si tus productos usan otra)
+        const tarjetas = document.querySelectorAll('.card, .product-card, .noticia-card');
+        
+        tarjetas.forEach(tarjeta => {
+            const textoTarjeta = tarjeta.textContent.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+            
+            if (textoTarjeta.includes(termino)) {
+                tarjeta.style.display = ''; // Muestra el elemento si coincide
+            } else {
+                tarjeta.style.display = 'none'; // Lo oculta si no coincide
+            }
+        });
+    }
+</script>
 </body>
 </html>
