@@ -90,6 +90,69 @@
 
         </div>
     </main>
+<script>
+    const searchBtn = document.getElementById('search-btn');
+    const searchInput = document.getElementById('site-search');
 
+    // 1. Controla la animación de la barra al dar clic en el ícono
+    searchBtn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        if (searchInput.style.width === '200px') {
+            if (searchInput.value.trim() !== '') {
+                procesarBusqueda(searchInput.value);
+            } else {
+                searchInput.style.width = '0px';
+                searchInput.style.opacity = '0';
+                searchBtn.style.color = '#cbd5e1';
+            }
+        } else {
+            searchInput.style.width = '200px';
+            searchInput.style.opacity = '1';
+            searchBtn.style.color = '#00ff87';
+            searchInput.focus();
+        }
+    });
+
+    // 2. Procesa la búsqueda si el usuario presiona la tecla ENTER
+    searchInput.addEventListener('keypress', (e) => {
+        if (e.key === 'Enter') {
+            procesarBusqueda(searchInput.value);
+        }
+    });
+
+    // 3. Redirección inteligente hacia el catálogo principal
+    function procesarBusqueda(texto) {
+        const termino = texto.trim().toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+        if (termino === '') return;
+
+        // Si el usuario ya está parado en el index, filtra localmente
+        if (window.location.pathname === '/' || window.location.pathname.includes('index.html')) {
+            filtrarElementosLocales(termino);
+        } else {
+            // Si está en otro apartado, viaja al index enviando el texto en la URL
+            window.location.href = `index.html?search=${encodeURIComponent(termino)}#catalogo`;
+        }
+    }
+
+    // Filtra las tarjetas de forma local (útil para la página principal)
+    function filtrarElementosLocales(termino) {
+        const tarjetas = document.querySelectorAll('.card, .product-card, .noticia-card');
+        tarjetas.forEach(tarjeta => {
+            const textoTarjeta = tarjeta.textContent.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+            tarjeta.style.display = textoTarjeta.includes(termino) ? '' : 'none';
+        });
+    }
+
+    // Cierra el buscador automáticamente si se hace clic fuera de él
+    document.addEventListener('click', (e) => {
+        if (!searchInput.contains(e.target) && !searchBtn.contains(e.target)) {
+            if(searchInput.value.trim() === '') {
+                searchInput.style.width = '0px';
+                searchInput.style.opacity = '0';
+                searchBtn.style.color = '#cbd5e1';
+            }
+        }
+    });
+</script>
 </body>
 </html>

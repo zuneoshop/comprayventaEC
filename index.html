@@ -349,6 +349,9 @@
                         </button>
                     </div>
                 </li>
+
+               
+                </li>
                
                     </div>
                 </li> <li>
@@ -460,55 +463,84 @@
     const searchBtn = document.getElementById('search-btn');
     const searchInput = document.getElementById('site-search');
 
-    // 1. Animación para abrir/cerrar la barra de búsqueda
+    // Animación para abrir/cerrar la barra de búsqueda
     searchBtn.addEventListener('click', (e) => {
         e.stopPropagation();
         if (searchInput.style.width === '200px') {
-            searchInput.style.width = '0px';
-            searchInput.style.opacity = '0';
-            searchInput.style.paddingRight = '0px';
-            searchBtn.style.color = '#cbd5e1';
-            searchInput.value = ''; // Limpia la búsqueda al cerrar
-            filtrarElementos('');
+            // Si ya está abierta y tiene texto, procesa la búsqueda al dar clic en la lupa
+            if (searchInput.value.trim() !== '') {
+                procesarBusqueda(searchInput.value);
+            } else {
+                searchInput.style.width = '0px';
+                searchInput.style.opacity = '0';
+                searchBtn.style.color = '#cbd5e1';
+            }
         } else {
             searchInput.style.width = '200px';
             searchInput.style.opacity = '1';
-            searchInput.style.paddingRight = '35px';
             searchBtn.style.color = '#00ff87';
             searchInput.focus();
         }
     });
 
-    // Cerrar la barra si hacen clic en cualquier otra parte de la pantalla
-    document.addEventListener('click', (e) => {
-        if (!searchInput.contains(e.target) && !searchBtn.contains(e.target)) {
-            searchInput.style.width = '0px';
-            searchInput.style.opacity = '0';
-            searchInput.style.paddingRight = '0px';
-            searchBtn.style.color = '#cbd5e1';
+    // Escuchar cuando el usuario presiona "ENTER"
+    searchInput.addEventListener('keypress', (e) => {
+        if (e.key === 'Enter') {
+            procesarBusqueda(searchInput.value);
         }
     });
 
-    // 2. Lógica de filtrado en tiempo real
-    searchInput.addEventListener('input', (e) => {
-        const tildesYMinusculas = e.target.value.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "");
-        filtrarElementos(tildesYMinusculas);
-    });
+    // Función que decide qué hacer con la búsqueda
+    function procesarBusqueda(texto) {
+        const termino = texto.trim().toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+        if (termino === '') return;
+
+        // Si estás en la página principal, filtra en tiempo real en la sección de catálogo
+        if (window.location.pathname === '/' || window.location.pathname.includes('index.html')) {
+            filtrarElementos(termino);
+        } else {
+            // ¡LA CLAVE! Si estás en otra página, te manda al index llevando la palabra clave en la URL
+            window.location.href = `index.html?search=${encodeURIComponent(termino)}#catalogo`;
+        }
+    }
 
     function filtrarElementos(termino) {
-        // Busca las tarjetas de productos (ajusta la clase .card si tus productos usan otra)
         const tarjetas = document.querySelectorAll('.card, .product-card, .noticia-card');
-        
         tarjetas.forEach(tarjeta => {
             const textoTarjeta = tarjeta.textContent.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "");
-            
-            if (textoTarjeta.includes(termino)) {
-                tarjeta.style.display = ''; // Muestra el elemento si coincide
-            } else {
-                tarjeta.style.display = 'none'; // Lo oculta si no coincide
-            }
+            tarjeta.style.display = textoTarjeta.includes(termino) ? '' : 'none';
         });
     }
+
+    // Al cargar la página principal, revisa si viene una búsqueda desde otra sección
+    window.addEventListener('DOMContentLoaded', () => {
+        const urlParams = new URLSearchParams(window.location.search);
+        const busquedaExterna = urlParams.get('search');
+        
+        if (busquedaExterna && (window.location.pathname === '/' || window.location.pathname.includes('index.html'))) {
+            const terminoClean = busquedaExterna.toLowerCase();
+            searchInput.style.width = '200px';
+            searchInput.style.opacity = '1';
+            searchInput.value = busquedaExterna;
+            searchBtn.style.color = '#00ff87';
+            
+            // Le damos un pequeño tiempo a que cargue el catálogo y filtramos
+            setTimeout(() => {
+                filtrarElementos(terminoClean);
+            }, 300);
+        }
+    });
+
+    // Cerrar la barra si hacen clic fuera
+    document.addEventListener('click', (e) => {
+        if (!searchInput.contains(e.target) && !searchBtn.contains(e.target)) {
+            if(searchInput.value.trim() === '') {
+                searchInput.style.width = '0px';
+                searchInput.style.opacity = '0';
+                searchBtn.style.color = '#cbd5e1';
+            }
+        }
+    });
 </script>
 </body>
 </html>
