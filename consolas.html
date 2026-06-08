@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Consolas y Componentes - comprayventaEC</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        /* Estilos específicos para las etiquetas de estado */
+        .badge {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-weight: bold;
+            margin-left: 8px;
+            display: inline-block;
+            vertical-align: middle;
+        }
+        .badge-nuevo {
+            background-color: #00ff87;
+            color: #13171c;
+            box-shadow: 0 0 8px rgba(0, 255, 135, 0.4);
+        }
+        .badge-usado {
+            background-color: #00bfff;
+            color: #13171c;
+            box-shadow: 0 0 8px rgba(0, 191, 255, 0.4);
+        }
+        .catalogo-container {
+            max-width: 1150px;
+            margin: 40px auto;
+            padding: 0 20px;
+        }
+        /* Reutilizamos el grid optimizado que tienes */
+        .grid-productos {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+            margin-top: 30px;
+        }
+        /* Contenedor de la imagen del producto */
+        .product-img-container {
+            width: 100%;
+            height: 200px;
+            background-color: #13171c;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+        .product-img-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+        .card:hover .product-img-container img {
+            transform: scale(1.05);
+        }
+        .product-info {
+            padding: 20px;
+        }
+        .product-title {
+            font-size: 1.2rem;
+            color: white;
+            font-weight: 700;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        .product-price {
+            color: #00ff87;
+            font-weight: 800;
+            font-size: 1.3rem;
+            text-shadow: 0 0 10px rgba(0, 255, 135, 0.2);
+            margin-top: 15px;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="logo">
+            <h1>comprayventa<span>EC</span></h1>
+        </div>
+        <nav>
+            <ul>
+                <li class="dropdown-menu">
+                    <a href="#" class="dropdown-trigger"><i class="fas fa-gamepad"></i> Catálogo</a>
+                    <div class="dropdown-content">
+                        <a href="compra.html"><i class="fas fa-shopping-cart"></i> Compra</a>
+                        <a href="venta.html"><i class="fas fa-tags"></i> Venta</a>
+                        <a href="cambio.html"><i class="fas fa-exchange-alt"></i> Cambio</a>
+                    </div>
+                </li>
+                <li class="dropdown-menu">
+                    <a href="#" class="dropdown-trigger"><i class="fas fa-newspaper"></i> Noticias y Consejos</a>
+                    <div class="dropdown-content">
+                        <a href="noticias.html"><i class="fas fa-bullhorn"></i> Noticias</a>
+                        <a href="trucos.html"><i class="fas fa-lightbulb"></i> Trucos</a>
+                    </div>
+                </li>
+                <li style="display: flex; align-items: center; margin-right: 15px; margin-left: 15px;">
+                    <div style="position: relative; display: flex; align-items: center;">
+                        <input type="text" id="site-search" placeholder="Buscar..." style="width: 0px; opacity: 0; padding: 6px 0px; border: 1px solid #00ff87; border-radius: 20px; background: #13171c; color: white; font-size: 0.85rem; outline: none; transition: all 0.3s ease; padding-left: 15px;">
+                        <button id="search-btn" style="background: none; border: none; color: #cbd5e1; cursor: pointer; padding: 8px;"><i class="fas fa-search"></i></button>
+                    </div>
+                </li>
+                <li>
+                    <a href="https://wa.me/593991668902" target="_blank" style="color: #00ff87 !important; font-weight: 800; border: 1px solid rgba(0, 255, 135, 0.4); padding: 6px 12px; border-radius: 6px; background: rgba(0, 255, 135, 0.05); text-transform: uppercase; font-size: 0.85rem; display: inline-flex; align-items: center; gap: 8px;">
+                        <i class="fab fa-whatsapp"></i> Publica tus artículos
+                    </a>
+                </li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="catalogo-container">
+        <h2 style="color: white; font-size: 2rem; text-transform: uppercase;" id="seccion-titulo">Consolas y Componentes</h2>
+        
+        <div class="grid-productos">
+            <div class="card" data-estado="nuevo">
+                <div class="product-img-container">
+                    <img src="images/ps5-console.jpg" alt="PlayStation 5 Slim">
+                </div>
+                <div class="product-info">
+                    <div class="product-title">
+                        PlayStation 5 Slim <span class="badge badge-nuevo">Nuevo</span>
+                    </div>
+                    <p style="color: #cbd5e1; font-size: 0.9rem; line-height: 1.5; margin-bottom: 10px;">Consola de 1TB edición digital. Incluye 1 control DualSense, cables de poder y caja sellada de fábrica de importación directa.</p>
+                    <div class="product-price">$520.00</div>
+                </div>
+            </div>
+
+            <div class="card" data-estado="usado">
+                <div class="product-img-container">
+                    <img src="images/ps4-pro.jpg" alt="PlayStation 4 Pro">
+                </div>
+                <div class="product-info">
+                    <div class="product-title">
+                        PlayStation 4 Pro <span class="badge badge-usado">Usado</span>
+                    </div>
+                    <p style="color: #cbd5e1; font-size: 0.9rem; line-height: 1.5; margin-bottom: 10px;">Capacidad de 1TB, resolución 4K dinámica. Se entrega con mantenimiento al día, pasta térmica cambiada y un mando original 9/10.</p>
+                    <div class="product-price">$260.00</div>
+                </div>
+            </div>
+
+            <div class="card" data-estado="nuevo">
+                <div class="product-img-container">
+                    <img src="images/dualsense.jpg" alt="Control DualSense PS5">
+                </div>
+                <div class="product-info">
+                    <div class="product-title">
+                        Control DualSense <span class="badge badge-nuevo">Nuevo</span>
+                    </div>
+                    <p style="color: #cbd5e1; font-size: 0.9rem; line-height: 1.5; margin-bottom: 10px;">Mando original para PS5 color Midnight Black. Cuenta con retroalimentación háptica y gatillos adaptativos dinámicos, caja original.</p>
+                    <div class="product-price">$75.00</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <button onclick="window.history.back();" class="btn-back-floating" title="Volver a la página anterior">
+        <i class="fas fa-arrow-left"></i> Volver
+    </button>
+
+    <script>
+        window.addEventListener('DOMContentLoaded', () => {
+            const urlParams = new URLSearchParams(window.location.search);
+            const estadoFiltro = urlParams.get('estado'); 
+            const tituloSeccion = document.getElementById('seccion-titulo');
+            const tarjetas = document.querySelectorAll('.card');
+
+            if (estadoFiltro === 'nuevo') {
+                tituloSeccion.innerHTML = 'Consolas y Partes <span style="color: #00ff87;">Nuevas</span>';
+                tarjetas.forEach(t => {
+                    t.style.display = t.getAttribute('data-estado') === 'nuevo' ? '' : 'none';
+                });
+            } else if (estadoFiltro === 'usado') {
+                tituloSeccion.innerHTML = 'Consolas y Partes <span style="color: #00bfff;">Usadas</span>';
+                tarjetas.forEach(t => {
+                    t.style.display = t.getAttribute('data-estado') === 'usado' ? '' : 'none';
+                });
+            }
+        });
+    </script>
+</body>
+</html>
